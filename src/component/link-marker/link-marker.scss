@@ -1,0 +1,61 @@
+.link-marker-chooser {
+    font-weight: bold;
+    color: #ffffffcc;
+    text-shadow: 0 1px #222;
+    padding: 10px;
+	padding-top: 5px;
+    background-color: #4f4f4f;
+    box-shadow: 0 0 2px 1px #212121 inset;
+    border-radius: 3px;
+    border: 1px solid #484848;
+	.title {
+		line-height: 1.45;
+	}
+	.container {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		grid-template-rows: 1fr 1fr 1fr;
+		width: 92px;
+		height: 92px;
+		column-gap: 1px;
+		row-gap: 1px;
+		background-color: #222;
+		.link-marker-icon {
+			width: 0;
+			height: 0;
+			border-style: solid;
+			position: absolute;
+			margin: 10px 5px;
+			border-width: 0 10px 10px 10px;
+			border-color: transparent transparent #484848 transparent;
+		}
+		.link-marker-button.marker-checked .link-marker-icon {
+			border-color: transparent transparent #40a9ff transparent;
+		}
+	}
+	.link-marker-reset,
+	.link-marker-button {
+		cursor: pointer;
+		&:hover {
+			outline: #40a9ff solid 1px;
+		}
+	}
+	.link-marker-reset {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.link-marker-icon {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		height: 100%;
+		.anticon {
+			font-size: 20px;
+		}
+	}
+	.marker-checked {
+		color: #40a9ff;
+	}
+}

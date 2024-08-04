@@ -1,0 +1,311 @@
+#root {
+	background-color: #fff;
+    min-width: 570px;
+}
+#app {
+	width: 100%;
+}
+.full-loading {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: linear-gradient(45deg, #333, #333);
+	z-index: 4000;
+	color: white;
+	text-shadow: 0 1px #333, 0 2px #111;
+	font-size: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.app-container {
+	display: flex;
+	column-gap: 10px;
+	min-height: 100vh;
+	max-width: 1600px;
+	margin: auto;
+	&.app-container-export {
+		flex-direction: row-reverse;
+		> .card-filter-panel {
+			display: none;
+		}
+		> .card-info-panel {
+			display: none;
+		}
+	}
+	.card-filter-panel {
+		flex: 0 0 0;
+	}
+	.card-info-panel {
+		flex: 3;
+		padding: 10px;
+		background-color: #404040;
+		border: 2px solid #444040;
+		margin: 10px 0;
+		border-radius: 8px;
+		box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+		color: #ffffffcc;
+		text-shadow: 0 1px #222;
+		position: relative;
+	}
+	.card-preview-panel {
+		flex: 0 0 570px;
+		position: relative;
+		overflow: hidden;
+		&.export-tainted {
+			.export-button {
+				color: #ff6f6f;
+			}
+		}
+		&.export-normal {
+			.export-button {
+				color: #3b9dff;
+			}
+		}
+		.export-button {
+			display: flex;
+			flex-direction: column;
+			background-color: #404040;
+			border-radius: 5px;
+			font-size: 19px;
+			line-height: 1.5;
+			margin: auto;
+			margin-top: 10px;
+			margin-bottom: 15px;
+			max-width: 549px;
+			outline: none !important;
+			padding: 10px;
+			text-align: left;
+			text-shadow: 0px 1px 2px black;
+			border: 1px solid #383838;
+			box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+			.anticon {
+				cursor: pointer;
+			}
+			button {
+				background-color: #3098ff;
+				color: white;
+				border: 1px solid #3b9dff;
+				border-radius: 4px;
+				outline: none !important;
+				cursor: pointer;
+			}
+			#save-button-waiting {
+				cursor: wait;
+				opacity: 0.8;
+				border: 1px solid #2b8ddf;
+			}
+			#save-button-ready {
+				cursor: pointer;
+				font-weight: bold;
+				box-shadow: 0 0 2px 1px #333;
+				&:hover {
+					background-color: #3b9dff;
+					box-shadow: none;
+				}
+			}
+			#save-button-tainted {
+				border: 1px solid transparent;
+				padding: 1px 0;
+			}
+			.imexport {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				column-gap: 10px;
+				margin-top: 10px;
+				button {
+					font-size: 15px;
+					background-color: #5e85c9;
+					border: 1px solid #5e85e9;
+					box-shadow: 0 0 2px 1px #333;
+					&:hover {
+						background-color: #5e85e9;
+						box-shadow: none;
+					}
+				}
+			}
+		}
+		.card-canvas-group {
+			position: relative;
+			box-shadow: 0 0 3px 2px #333, 0 0 8px 3px #444;
+			width: 549px;
+			height: 800px;
+			margin: auto;
+			margin-bottom: 10px;
+			canvas {
+				position: absolute;
+				left: 0;
+				z-index: 1;
+			}
+			&:hover {
+				#export-canvas {
+					display: inline-block !important;
+				}
+				#export-canvas-guard {
+					display: flex;
+				}
+			}
+			#export-canvas {
+				display: none;
+				z-index: 100;
+			}
+			#export-canvas-guard {
+				position: absolute;
+				left: 0;
+				display: none;
+				align-items: center;
+				justify-content: center;
+				z-index: 101;
+				background-color: #ffffff44;
+				width: 549px;
+				height: 800px;
+				.anticon {
+					font-size: 50px;
+				}
+				.canvas-guard-alert {
+					position: absolute;
+					transform: translateY(-60px);
+					color: white;
+					padding: 5px 10px;
+					border-radius: 5px;
+					background-color: #1890ff;
+					box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+				}
+				&.guard-on {
+					display: flex !important;
+				}
+			}
+			.crop-canvas {
+				position: relative;
+				width: 416px;
+				height: 416px;
+				z-index: 0;
+				visibility: hidden;
+			}
+		}
+	}
+}
+
+.control-board {
+	.control-zoom {
+		display: grid;
+		grid-template-columns: 549px 1fr;
+		> span {
+			display: flex;
+			align-self: center;
+			margin-left: 5px;
+		}
+	}
+}
+
+.hidden {
+	visibility: hidden;
+}
+
+// [OVERWRITE]
+.input-overlay,
+.card-info-panel {
+	.ant-input-number,
+	.ant-input-number-handler-wrap,
+	.ant-input-group-addon,
+	.ant-input,
+	.ant-radio-button-wrapper,
+	.ant-radio-button-wrapper.ant-radio-button-wrapper-checked {
+		background-color: #333;
+		color: #ffffffcc;
+		text-shadow: 0 1px #222;
+	}
+	.ant-input,
+	.ant-input-number,
+	.ant-input-number-handler-wrap,
+	.ant-radio-button-wrapper {
+		border-color: #222;
+	}
+	.ant-radio-button-wrapper:not(:first-child):not(.ant-radio-button-wrapper-checked)::before {
+		background-color: #222;
+	}
+	.ant-checkbox-wrapper {
+		color: #ffffffcc;
+		text-shadow: 0 1px #222;
+	}
+	.ant-btn.download-button,
+	.ant-input-group-addon {
+		font-weight: bold;
+		border-color: #222;
+		background-color: #4a4a4d;
+		color: #ffffffcc;
+		text-shadow: 0 1px #222;
+		user-select: none;
+	}
+	textarea,
+	.ant-checkbox,
+	.ant-radio-group:not(.frame-radio),
+	.ant-input-wrapper {
+		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+	}
+	.card-image-source-input {
+		.ant-radio-group {
+			box-shadow: none;
+			.ant-radio-button-wrapper:first-child {
+				border-color: #222;
+			}
+		}
+	}
+	.anticon {
+		color: #ffffffcc;
+	}
+	input[type="file"] {
+		overflow: hidden;
+	}
+}
+.ant-input-group {
+	.ant-radio-button-wrapper,
+	.ant-input,
+	.ant-input-affix-wrapper {
+		background-color: #333;
+		color: #ffffffcc;
+		text-shadow: 0 1px #222;
+		.anticon {
+			color: #ffffffcc;
+		}
+	}
+	.ant-input,
+	.ant-input-affix-wrapper {
+		border-color: #222;
+	}
+}
+
+@media only screen and (max-width: 1024px) {
+	.app-container {
+		.card-preview-panel {
+			flex: 0 0 430px;
+			.card-canvas-group {
+				transform: scale(0.75) translateY(-133px) translateX(-78px);
+			}
+			.export-button {
+				font-size: 15px;
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: 800px) {
+	.app-container {
+		flex-direction: column;
+		flex-wrap: wrap;
+		.card-preview-panel {
+			flex: 1 1;
+			.export-button {
+				max-width: unset;
+			}
+			.card-canvas-group {
+				transform: scale(1);
+			}
+		}
+		.card-info-panel {
+			margin: 10px 15px;
+		}
+	}
+}

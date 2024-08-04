@@ -1,0 +1,189 @@
+.card-info-panel {
+	.foil-radio.checkbox-train {
+		display: inline-flex;
+		margin-bottom: 10px;
+	}
+	.frame-radio {
+		display: flex;
+		flex-wrap: wrap;
+		column-gap: 5px;
+		row-gap: 5px;
+		.ant-radio-button-wrapper {
+			flex: 1;
+			text-transform: capitalize;
+			padding: 0 5px;
+			width: 80px;
+			text-align: center;
+			border-width: 0 !important;
+			text-shadow: none;
+			box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+			&::before {
+				display: none;
+			}
+		}
+		.ant-radio-button-wrapper-checked {
+			outline: 2px solid #1890ff;
+			outline-offset: 1px;
+		}
+	}
+	.family-radio {
+		display: flex;
+		.ant-radio-button-wrapper {
+			padding: 0 5px;
+			width: 70px;
+			text-align: center;
+		}
+	}
+	.main-info {
+		display: flex;
+		align-items: flex-start;
+		margin-top: 1em;
+		column-gap: 1em;
+		row-gap: 0.5em;
+		.main-info-first {
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			row-gap: 0.5em;
+		}
+		.main-info-second {
+			flex: 0 0 375px;
+			text-align: center;
+		}
+	}
+	.name-color-input {
+		width: 100%;
+		position: relative;
+		z-index: 3;
+		.ant-input-affix-wrapper {
+			outline: none !important;
+			&:hover {
+				border-color: #222;
+			}
+		}
+		.ant-radio-group {
+			box-shadow: none;
+			.ant-radio-wrapper {
+				color: #ffffffcc;
+			}
+		}
+	}
+	.checkbox-train {
+		display: flex;
+		.ant-radio-button-wrapper-checked {
+			border-color: #1890ff;
+		}
+	}
+	.checkbox-image-train label {
+		padding: 0 10px;
+		flex: 1;
+		span:nth-child(2) {
+			width: 100%;
+			height: 100%;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			img {
+				width: 26px;
+				height: 26px;
+			}
+		}
+	}
+	.name-input .ant-input-group-addon {
+		min-width: 105px;
+	}
+	.set-id-input .ant-input-group-addon,
+	.password-input .ant-input-group-addon {
+		width: 140px;
+	}
+	.checkbox-condense-train {
+		display: inline-flex;
+		.standalone-addon.ant-input-group-addon {
+			width: unset;
+		}
+		.ant-radio-button-wrapper {
+			flex: 1;
+		}
+	}
+
+	.ant-input-group-addon {
+		min-width: 105px;
+		text-align: right;
+	}
+	.standalone-addon.ant-input-group-addon {
+		display: inline-block;
+		height: 32px;
+		width: 105px;
+		line-height: 30px;
+		position: relative;
+	}
+	.card-header {
+		display: flex;
+		align-items: center;
+		margin-top: 0.5em;
+		flex-wrap: wrap;
+		row-gap: 0.5em;
+		.card-info-sub-family {
+			padding-right: 1em;
+			margin-right: 1em;
+			border-right: 1px solid #ccc;
+			&:empty {
+				padding: 0;
+				margin: 0;
+				border: none;
+			}
+		}
+	}
+	.card-footer-input {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		row-gap: 0.5em;
+		column-gap: 10px;
+		.input-1st {
+			align-self: center;
+		}
+		.sticker-input,
+		.creator-input {
+			grid-column: span 2;
+		}
+	}
+	.pendulum-container {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		column-gap: 10px;
+		row-gap: 0.5em;
+		padding: 10px;
+		border: 1px solid #484848;
+		border-radius: 3px;
+		box-shadow: 0 0 2px 1px #212121 inset;
+		background-color: #48484b;
+		.joined-row {
+			grid-column: span 2;
+		}
+		.ant-input-group-addon {
+			width: 105px;
+			text-align: left;
+		}
+	}
+}
+
+@media only screen and (max-width: 1024px) {
+	.card-info-panel {
+		.frame-radio {
+			flex-wrap: wrap;
+		}
+		.checkbox-star-train {
+			.ant-radio-button-wrapper {
+				width: 30px;
+				padding: 0;
+				text-align: center;
+			}
+		}
+		.main-info {
+			flex-wrap: wrap-reverse;
+			.main-info-second {
+				flex: 1 1 375px;
+			}
+		}
+	}
+}
